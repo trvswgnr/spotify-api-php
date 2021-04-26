@@ -88,4 +88,20 @@ class Spotify {
 		$response = $this->call($options); 
 		return $response;
 	}
+
+	/**
+	 * Magic method for getting an API endpoint.
+	 *
+	 * Calling a method that starts with 'get_' will use that Spotify endpoint
+	 *
+	 * Example usage:
+	 * $spotify->tracks('3dMHj1fr7UxDNqDtUSsPMI');
+	 * 
+	 * @param string $function Function name
+	 * @param array $args Function arguments
+	 */
+	public function __call($function, $args) {
+		$function = str_replace('_', '-', $function);
+		return $this->get($function, ...$args);
+	}
 }
