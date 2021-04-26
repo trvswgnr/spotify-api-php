@@ -20,6 +20,8 @@ $spotify       = new Spotify($client_id, $client_secret);
 
 Then call any GET endpoint from the Spotify API as a function:
 ```php
+// calls GET https://api.spotify.com/v1/artists/2buda3WQO8N9DEkmNItRWC
 $artist_info = $spotify->artists('2buda3WQO8N9DEkmNItRWC');
+
 echo $artist_info->name;
 ```
